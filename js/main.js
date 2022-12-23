@@ -81,6 +81,15 @@ const cars = [
   },
 ];
 
+// Example 2 - Метод map
+// Нехай функція makeCarsWithDiscount повертає новий масив об'єктів із змінним значенням властивості price залежно від переданої знижки.
+
+// const makeCarsWithDiscount = (cars, discount) =>
+//   cars.map(car => ({ ...car, price: car.price * (1 - discount) }));
+
+// console.table(makeCarsWithDiscount(cars, 0.2));
+// console.table(makeCarsWithDiscount(cars, 0.4));
+
 // const sortByAscendingAmount = cars =>
 //   [...cars].sort((a, b) => a.amount - b.amount);
 
@@ -97,13 +106,25 @@ const cars = [
 
 // console.log(getTotalAmount(cars));
 
+// ------------------------
+
+// Example 11 - Ланцюжки методів
+// Нехай функція getAvailableCarNames повертає масив моделей автомобілів, але тільки тих, які зараз на розпродажі.
+
+// const getModelsOnSale = cars =>
+//   cars.filter(car => car.onSale).map(car => car.model);
+
+// console.table(getModelsOnSale(cars));
+
+// ------------------------
+
 // Example 12 - Ланцюжки методів
 // Нехай функція getSortedCarsOnSale повертає масив автомобілів на розпродажі (Властивість onSale), відсортованих за зростанням ціни.
 
-const getSortedCarsOnSale = cars =>
-  cars.filter(car => car.onSale).sort((a, b) => a.price - b.price);
+// const getSortedCarsOnSale = cars =>
+//   cars.filter(car => car.onSale).sort((a, b) => a.price - b.price);
 
-console.table(getSortedCarsOnSale(cars));
+// console.table(getSortedCarsOnSale(cars));
 
-// cars
-console.table('🚀 ~ file: main.js:109 ~ cars', cars);
+// // cars
+// console.table('🚀 ~ file: main.js:109 ~ cars', cars);
