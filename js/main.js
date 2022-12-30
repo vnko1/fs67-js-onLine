@@ -18,7 +18,7 @@
 //     this.numberOfPosts = numberOfPosts;
 //     this.topics = topics;
 //   }
-//   getinfo() {
+//   getInfo() {
 //     return `User ${this.name} is ${this.age} years old and has ${this.numberOfPosts} posts.`;
 //   }
 //   updatePostCount(value) {
@@ -26,17 +26,33 @@
 //   }
 // }
 
-// const mango = new User({
+// const Bloger = function ({ name, age, numberOfPosts, topics } = {}) {
+//   this.name = name;
+//   this.age = !Number(age) ? 0 : Number(age);
+//   this.numberOfPosts = numberOfPosts;
+//   this.topics = topics;
+// };
+
+// Bloger.prototype.getInfo = function () {
+//   return `User ${this.name} is ${this.age} years old and has ${this.numberOfPosts} posts.`;
+// };
+
+// Bloger.prototype.updatePostCount = function (value) {
+//   this.numberOfPosts += value;
+// };
+
+// const mango = new Bloger({
 //   name: 'mango@mail.com',
 //   age: 24,
 //   numberOfPosts: 20,
 //   topics: ['tech', 'cooking'],
 // });
+
 // console.log(mango.getInfo()); // User mango@mail.com is 24 years old and has 20 posts
 // mango.updatePostCount(5);
 // console.log(mango.getInfo()); // User mango@mail.com is 24 years old and has 25 posts
 
-// const poly = new User({
+// const poly = new Bloger({
 //   name: 'poly@mail.com',
 //   age: 19,
 //   numberOfPosts: 17,
@@ -78,6 +94,29 @@
 //   }
 // }
 
+// const Storage = function (item) {
+//   this.items = item;
+// };
+
+// Storage.findItem = function (item, items) {
+//   return items.findIndex(el => el === item);
+// };
+
+// Storage.prototype.getItems = function () {
+//   return this.items;
+// };
+
+// Storage.prototype.addItem = function (item) {
+//   this.items.push(item);
+// };
+
+// Storage.prototype.removeItem = function (item) {
+//   if (Storage.findItem(item, this.items) === -1) {
+//     return 'нету';
+//   }
+//   this.items.splice(Storage.findItem(item, this.items), 1);
+// };
+
 // const storage = new Storage(['🍎', '🍋', '🍇', '🍑']);
 
 // const items = storage.getItems();
@@ -117,11 +156,34 @@
 //   }
 // }
 
-// const mango = new User({
-//   login: 'Mango',
-//   email: 'mango@dog.woof',
-// });
+const User = function ({ login, email }) {
+  this._login = login;
+  this._email = email;
+};
 
+User.prototype.getLogin = function () {
+  return this._login;
+};
+
+User.prototype.setLogin = function (newLogin) {
+  this._login = newLogin;
+};
+
+User.prototype.getEmail = function () {
+  return this._email;
+};
+
+User.prototype.setEmail = function (newEmail) {
+  this._email = newEmail;
+};
+
+const mango = new User({
+  login: 'Mango',
+  email: 'mango@dog.woof',
+});
+
+console.log(mango.getLogin()); // Mango
+mango.setLogin('Mangodoge');
 // console.log(mango.login); // Mango
 // mango.login = 'Mangodoge';
 // console.log(mango.login); // Mangodoge
@@ -171,19 +233,40 @@
 //   }
 // }
 
+// const Notes = function (item) {
+//   this.items = item;
+// };
+
+// Notes.Priority = { LOW: 'low', NORMAL: 'normal', HIGH: 'high' };
+// Notes.findByIndex = function (text, item) {
+//   return item.findIndex(el => el.text === text);
+// };
+
+// Notes.prototype.addNote = function (note) {
+//   this.items.push(note);
+// };
+
+// Notes.prototype.removeNote = function (text) {
+//   this.items.splice(Notes.findByIndex(text, this.items), 1);
+// };
+
+// Notes.prototype.updatePriority = function (text, newPriority) {
+//   this.items[Notes.findByIndex(text, this.items)].priority = newPriority;
+// };
+
 // const myNotes = new Notes([]);
 
 // myNotes.addNote({ text: 'Моя перша замітка', priority: Notes.Priority.LOW });
-// // console.log(myNotes);
+// console.log(myNotes);
 
 // myNotes.addNote({
 //   text: 'Моя друга замітка',
 //   priority: Notes.Priority.NORMAL,
 // });
-// // console.log(myNotes.items);
+// console.log(myNotes.items);
 
 // myNotes.removeNote('Моя перша замітка');
-// // console.log(myNotes.items);
+// console.log(myNotes.items);
 
 // myNotes.updatePriority('Моя друга замітка', Notes.Priority.HIGH);
 // console.log(myNotes.items);
@@ -196,7 +279,9 @@
 //     this.on = isOpen;
 //   }
 // }
-
+// const Toggle = function ({ isOpen = false } = {}) {
+//   this.on = isOpen;
+// };
 // const firstToggle = new Toggle({ isOpen: true });
 // console.group('firstToggle');
 // console.log(firstToggle.on);
