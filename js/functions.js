@@ -12,12 +12,11 @@ function onLoadChecking() {
 
 function createTask() {
   const inputValue = inputEl.value.trim();
-  const generateId = Math.floor(Math.random() * 1000);
   if (inputValue === '') {
-    console.log('type task');
+    alert('type task');
     return;
   }
-
+  const generateId = Math.floor(Math.random() * 1000);
   addTaskToStorage(inputValue, generateId);
   createEl(inputValue, generateId);
   inputEl.value = '';
@@ -74,4 +73,10 @@ function addTaskToStorage(text, id) {
   }
 }
 
-export { createTask, editsLiEl, onLoadChecking };
+function onEnterDown(e) {
+  if (e.code === 'Enter') {
+    createTask();
+  }
+}
+
+export { createTask, editsLiEl, onLoadChecking, onEnterDown };
