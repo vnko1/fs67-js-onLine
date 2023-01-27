@@ -3,7 +3,12 @@ import { save, load } from './storagefunc.js';
 
 const KEY_STORAGE = 'tasks';
 
-function onLoadChecking() {}
+function onLoadChecking() {
+  const currentState = load(KEY_STORAGE);
+  if (currentState !== undefined) {
+    currentState.forEach(({ text, id, isDone }) => createEl(text, id, isDone));
+  }
+}
 
 function createTask() {
   const inputValue = inputEl.value.trim();
@@ -18,10 +23,11 @@ function createTask() {
   inputEl.value = '';
 }
 
-function createEl(value, id) {
+function createEl(value, id, isDone = false) {
   const liEl = document.createElement('li');
   liEl.textContent = value;
   liEl.dataset.id = id;
+  if (isDone) liEl.classList.add('checked');
   ulEl.appendChild(liEl);
   addCross(liEl);
 }
