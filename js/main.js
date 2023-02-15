@@ -7,4 +7,4 @@ axios.get(URL).then(res => console.log(res.data));
 // axios.get(URL).then(res => console.log(res.data));
 // axios.delete(`${URL}/6`);
 // axios.get(URL).then(res => console.log(res.data));
-axios.post(URL, { text: 'post' });
+// axios.post(URL, { text: 'post' });
